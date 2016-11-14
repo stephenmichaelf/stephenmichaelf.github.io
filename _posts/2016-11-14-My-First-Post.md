@@ -1,10 +1,7 @@
 ---
 layout: post
-title: This is my first modified post!
+title: Sending emails without making your users wait
 ---
-
-# Sending emails without making your users wait
-
 ### The Problem 
 
 One of the applications I am working on is a social networking site for martial artists. One of the features we have is similar to the follow feature on Twitter. When you see a page you are interested in you can choose to Follow it and get updates when anything changes.
