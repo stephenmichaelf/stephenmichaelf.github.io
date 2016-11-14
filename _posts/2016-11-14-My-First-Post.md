@@ -55,10 +55,9 @@ Specifically, we are going to use the following:
 
 ### The Code
 
-'''cs
+```cs
 int x = 1;
-'''
-
+```
 
 Tasks
 * Add some diagrams to make it more clear, including sample data values
