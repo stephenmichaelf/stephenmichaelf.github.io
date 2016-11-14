@@ -59,4 +59,5 @@ Specifically, we are going to use the following:
 
 Tasks
 * Add some diagrams to make it more clear, including sample data values
+* Add a section describing how this pattern can be generalized to other purposes and how, what to watch out for, what the requirements are
 
