@@ -10,6 +10,8 @@ One of the applications I am working on is a social networking site for martial 
 
 For now the structure of this on the back end is straight forward. Each page as a unique id and each user has a unique id. When you want to follow a page we write a row to the followers table that has the page id and the user id. Whenever a change is made to a page we query for all of the followers and send each of them an email saying the page has been updated with a link to the page.
 
+[show list of steps we take right now, later show new list of steps in diagram]
+
 For a small number of users you can see this probably won't cause many issues. If I own a page I can go make my update, save the changes, and be sure everyone will be notified.
 
 What happens though as the number of followers starts to increase? Sending 100 emails should be pretty fast, but what about 1,000, 10,000 or 50,000? Imagine Kim Kardashian uploading something and having to notify 80 million people. When you make this update you would be waiting a pretty long time for all of these emails to get sent.
