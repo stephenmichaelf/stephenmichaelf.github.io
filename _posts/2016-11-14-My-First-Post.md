@@ -6,7 +6,6 @@ title: Sending emails without making your users wait
 
 One of the applications I am working on is a social networking site for martial artists. One of the features we have is similar to the follow feature on Twitter. When you see a page you are interested in you can choose to Follow it and get updates when anything changes.
 
-[insert picture of following here]
 ![_config.yml]({{ site.baseurl }}/images/2016_11_14_15_follow_gym.jpg)
 
 For now the structure of this on the back end is straight forward. Each page as a unique id and each user has a unique id. When you want to follow a page we write a row to the followers table that has the page id and the user id. Whenever a change is made to a page we query for all of the followers and send each of them an email saying the page has been updated with a link to the page.
@@ -50,13 +49,14 @@ Now that we are aware of the process, what pieces do we need to make it happen? 
 
 Today we are going to use Amazon Web Services for all of the processing and queue management and Java/C# for the code. I assume most of you are familiar with AWS, if not I strongly encourage you to take a deeper look. They have excellent documentation and many managed services covering a broad range of capabilities. Basically almost anything you need to do they probably have a service for it. And you only pay for what you use.
 
-Specifically, we are going to use the following:
+Specifically, we are going to need the following:
 
-- AWS: PAAS/IAAS where all of the services are
-- SES: Simple Email Service used to send emails
-- SQS: Amazon's queing service to store our messages and pull work from
-- C#/Java: What we are going to write the code in
-- EC2/Lambda: Used as our workers
+- A way to write the data of what needs to be done
+- A way to store the data in a queue
+- A way to read the data of what needs to be done
+- A way to send emails
+
+The way we are going to fill these needs is by using C#, SQS, and SES. We will write simple console apps to both read from and write to the queue. The queue itself will be maintained by SQS on AWS. For emails we will use SES on AWS. When solving this yourself you can use whatever suits you best. You may decide to use a different programming language, to run your listeners in a console app on EC2, to use a different message queue, etc. The goal here is to illustrate one set of components. Regardless of the underlying technology the pattern and pieces are still the same.
 
 ### The Code
 
