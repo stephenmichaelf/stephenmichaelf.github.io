@@ -64,6 +64,16 @@ The way we are going to fill these needs is by using C#, SQS, and SES. We will w
 int x = 1;
 ```
 
+Prerequisites:
+In order to do this exact setup you will need Visual Studio installed on your computer and an AWS account setup.
+
+We are going to perform the following steps:
+
+1. Create a message queue in SQS
+2. Write a program that will wrap SQS and allow us to write to the queue
+3. Write a program that will wrap SQS and allow us to read from the queue
+- a. This program will also have a wrapper for SES that sends emails
+
 Tasks
 * Add some diagrams to make it more clear, including sample data values
 * Add a section describing how this pattern can be generalized to other purposes and how, what to watch out for, what the requirements are
