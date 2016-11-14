@@ -6,7 +6,7 @@ title: Sending emails without making your users wait
 
 One of the applications I am working on is a social networking site for martial artists. One of the features we have is similar to the follow feature on Twitter. When you see a page you are interested in you can choose to Follow it and get updates when anything changes.
 
-![_config.yml]({{ site.baseurl }}/images/2016_11_14_15_follow_gym.jpg)
+![_config.yml]({{ site.baseurl }}/images/2016_11_14_15_follow_gym.jpg){: .center-image }
 
 For now the structure of this on the back end is straight forward. Each page as a unique id and each user has a unique id. When you want to follow a page we write a row to the followers table that has the page id and the user id. Whenever a change is made to a page we query for all of the followers and send each of them an email saying the page has been updated with a link to the page.
 
