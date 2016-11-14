@@ -55,6 +55,9 @@ Specifically, we are going to use the following:
 
 ### The Code
 
+'''cs
+int x = 1;
+'''
 
 
 Tasks
