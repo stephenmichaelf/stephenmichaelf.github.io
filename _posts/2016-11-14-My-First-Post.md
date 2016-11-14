@@ -74,6 +74,16 @@ We are going to perform the following steps:
 3. Write a program that will wrap SQS and allow us to read from the queue
 - a. This program will also have a wrapper for SES that sends emails
 
+#### Step 1. Create a message queue in SQS
+
+
+#### Step 2. Write a wrapper for SQS and use it to write to the queue
+
+
+#### Step 3. Reuse the wrapper for SQS and use it to read from the queue. Include a wrapper for SES that sends emails
+
+
+
 Tasks
 * Add some diagrams to make it more clear, including sample data values
 * Add a section describing how this pattern can be generalized to other purposes and how, what to watch out for, what the requirements are
