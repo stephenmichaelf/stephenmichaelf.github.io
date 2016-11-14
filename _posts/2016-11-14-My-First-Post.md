@@ -34,8 +34,12 @@ I would like to make a quick note here. If we abstract away the ability to send 
 
 If we have the following:
 
-IEmailSender
-- void SendEmails(IEnumerable<String> recipients, String body, String message);
+```cs
+public interface IEmailSender
+{
+  void SendEmails(IEnumerable<String> recipients, String body, String message);
+}
+```
 
 We can then have two implementations(SynchronousEmailSender and MessageQueueEmailSender) of this interface, one that sends them right away and one that writes them to a queue(the latter of which we will see below). Then the change is as simple as writing the new implementation and adjusting our composition root to use the new implementation. We don't have to worry about going through all of our code that sends email and changing it. The implementation is hidden from the user.
 
