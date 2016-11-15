@@ -199,6 +199,13 @@ And if we go back to AWS we can see there is a message in the queue:
 
 #### Step 3. Reuse the wrapper for SQS and use it to read from the queue. Include a wrapper for SES that sends emails
 
+Talk about the code that receives the message.
+
+Now we need to write some code to wrap the email sending capability of SES. It may look something like this:
+
+```cs
+
+```
 
 
 Tasks
