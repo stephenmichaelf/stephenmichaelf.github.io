@@ -269,6 +269,19 @@ private static void ReceiveMessage()
 }
 ```
 
+Now if we run this code the message will be processed! We can check SQS to verify there are no mesages left in the queue:
+
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/zero_messages_available.jpg){: .center-image }
+
+And if I check my email I should see my new email:
+
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/email_from_message_queue.jpg){: .center-image }
+
+### Conclusion
+
+Congratulations on making it through all of that! I think we have done a solid job of making our solution scale a lot better. There will definitely still be changes we need to make as things grow. You can imagine storing >1 email in the queue message for faster processing and less back and forth with the queue. Also if we get a ton of emails that need to be send we may need more than one machine reading off the queue and sending messages. The nice thing about AWS is that it will handle the scaling of SES and SQS for us!
+
+
 Tasks
 * Add some diagrams to make it more clear, including sample data values
 * Add a section describing how this pattern can be generalized to other purposes and how, what to watch out for, what the requirements are
