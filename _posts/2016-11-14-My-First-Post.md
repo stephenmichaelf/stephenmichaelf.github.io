@@ -109,6 +109,22 @@ public interface IMessageQueue
 }
 ```
 
+We are also going to need a class to represent the message in the queue that is agnostic of the underlying implementation. This lets us swap out other message queues later:
+
+```cs
+public class QueueMessage
+{
+  public QueueMessage(String body, String receiptHandle)
+  {
+    this.Body = body;
+    this.ReceiptHandle = receiptHandle;
+  }
+
+  public String Body { get; private set; }
+  public String ReceiptHandle { get; private set; }
+}
+```
+
 Then we need to create a class that implements the interface and uses the AWS SQS library:
 
 ```cs
