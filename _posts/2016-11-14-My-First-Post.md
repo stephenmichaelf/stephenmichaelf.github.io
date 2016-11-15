@@ -175,12 +175,11 @@ private static void SendMessage()
 ```
 If we debug the code we can see the result of sending the message:
 
-[result details image]
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/queue_message_result.jpg){: .center-image }
 
 And if we go back to AWS we can see there is a message in the queue:
 
-[image of aws sqs with item in queue]
-
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/sqs_queue_item.jpg){: .center-image }
 
 #### Step 3. Reuse the wrapper for SQS and use it to read from the queue. Include a wrapper for SES that sends emails
 
