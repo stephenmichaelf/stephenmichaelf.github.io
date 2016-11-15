@@ -204,9 +204,70 @@ Talk about the code that receives the message.
 Now we need to write some code to wrap the email sending capability of SES. It may look something like this:
 
 ```cs
+public interface IEmailSender
+{
+  void Send(EmailMessage emailMessage);
+}
 
+public class SesEmailSender : IEmailSender
+{
+  private readonly AmazonSimpleEmailServiceClient _emailServiceClient;
+
+  public SesEmailSender()
+  {
+    _emailServiceClient = new AmazonSimpleEmailServiceClient(
+      new BasicAWSCredentials(accessKey: "FILL IN", secretKey: "FILL IN"),  
+      RegionEndpoint.USEast1);
+  }
+
+  public void Send(EmailMessage emailMessage)
+  {
+    var sendRequest = new SendEmailRequest
+    {
+      Source = emailMessage.From,
+      Destination = new Destination { ToAddresses = new List<string> { emailMessage.To } },
+      Message = new Message
+      {
+          Subject = new Content(emailMessage.Subject),
+          Body = new Body { Html = new Content(emailMessage.Body) }
+      }
+    };
+
+    try
+    {
+      var response = _emailServiceClient.SendEmail(sendRequest);
+    }
+    catch {  }
+  }
+}
 ```
+Now we can finish the code to receive the message:
 
+```cs
+private static void ReceiveMessage()
+{
+    /* Create the message queue object.  */
+    IMessageQueue queue = new SqsMessageQueue();
+
+    /* Create the email sender. */
+    IEmailSender emailSender = new SesEmailSender();
+
+    /* Listen for messages and send an email when we receive one. */
+    QueueMessage message = queue.ReceiveMessage();
+
+    if (message != null)
+    {
+        /* Serialize the message back into an EmailMessage. */
+        EmailMessage emailMessage = JsonConvert.DeserializeObject<EmailMessage>(message.Body);
+
+        /* Send an email based on the contents of the message. */
+        emailSender.Send(emailMessage);
+
+        /* Delete the message from the queue once we have successfully processed it. */
+        queue.DeleteMessage(message.ReceiptHandle);
+    }
+}
+```
 
 Tasks
 * Add some diagrams to make it more clear, including sample data values
