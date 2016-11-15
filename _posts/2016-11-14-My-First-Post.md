@@ -129,7 +129,7 @@ public class SqsMessageQueue : IMessageQueue
   {
     SendMessageRequest sendMessageRequest = new SendMessageRequest
     {
-        QueueUrl = "https://sqs.us-east-1.amazonaws.com/768131023931/EmailsToBeSent",
+        QueueUrl = "https://sqs.us-east-1.amazonaws.com/xxxxxxxxxxxx/EmailsToBeSent",
         MessageBody = message
     };
 
