@@ -114,6 +114,26 @@ Then we need to create a class that implements the interface and uses the AWS SQ
 
 ```
 
+Then we need a class to represent an email message, this is what we will store in our queue:
+
+```cs
+public class EmailMessage
+{
+  public EmailMessage(String from, String to, String subject, String body)
+  {
+    this.From = from;
+    this.To = to;
+    this.Subject = subject;
+    this.Body = body;
+  }
+
+  public String From { get; private set; }
+  public String To { get; private set; }
+  public String Subject { get; private set; }
+  public String Body { get; private set; }
+}
+```
+
 #### Step 3. Reuse the wrapper for SQS and use it to read from the queue. Include a wrapper for SES that sends emails
 
 
