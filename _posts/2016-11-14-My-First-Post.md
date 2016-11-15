@@ -99,7 +99,20 @@ Now that we have our packages added, we can start coding!
 A great resource on how to do some of this can be found here. I highly recommend the AWS documentation whenever you get stuck with anything. They keep it up to date and they have solutions for pretty much any issue you may have.
 http://docs.aws.amazon.com/sdk-for-net/v2/developer-guide/how-to/sqs/SendMessage.html
 
+First we need an interface for our message queue:
 
+```cs
+public interface IMessageQueue
+{
+  void QueueMessage(String message);
+}
+```
+
+Then we need to create a class that implements the interface and uses the AWS SQS library:
+
+```cs
+
+```
 
 #### Step 3. Reuse the wrapper for SQS and use it to read from the queue. Include a wrapper for SES that sends emails
 
