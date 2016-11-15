@@ -60,10 +60,6 @@ The way we are going to fill these needs is by using C#, SQS, and SES. We will w
 
 ### The Code
 
-```cs
-int x = 1;
-```
-
 Prerequisites:
 In order to do this exact setup you will need Visual Studio installed on your computer and an AWS account setup.
 
@@ -76,7 +72,10 @@ We are going to perform the following steps:
 
 #### Step 1. Create a message queue in SQS
 
-
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/aws_services_list.jpg){: .center-image }
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/sqs_get_started.jpg){: .center-image }
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/create_queue.jpg){: .center-image }
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/queue_details.jpg){: .center-image }
 
 #### Step 2. Write a wrapper for SQS and use it to write to the queue
 
