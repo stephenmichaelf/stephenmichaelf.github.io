@@ -133,6 +133,22 @@ public class EmailMessage
 }
 ```
 
+Now that all the components are in place let's combine everything and send a message to our queue!
+
+```cs
+private static void SendMessage()
+{
+  /* Create the message queue object.  */
+  IMessageQueue queue = new SqsMessageQueue();
+
+  /* Create the email we want to send. */
+  var emailMessage = new EmailMessage(from: "stephenmichaelf@gmail.com", to: "stephenmichaelf@gmail.com", subject: "This is my subject!", body: "This is the body of my email.");
+
+  /* Send the email. We need to serialize the message first. */
+  queue.QueueMessage(JsonConvert.SerializeObject(emailMessage));
+}
+```
+
 #### Step 3. Reuse the wrapper for SQS and use it to read from the queue. Include a wrapper for SES that sends emails
 
 
