@@ -6,7 +6,7 @@ title: Sending emails without making your users wait
 
 One of the applications I am working on is a social networking site for martial artists. One of the features we have is similar to the follow feature on Twitter. When you see a page you are interested in you can choose to Follow it and get updates when anything changes.
 
-![_config.yml]({{ site.baseurl }}/images/2016_11_14_15_follow_gym.jpg){: .center-image }
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/follow_gym.jpg){: .center-image }
 
 For now the structure of this on the back end is straight forward. Each page as a unique id and each user has a unique id. When you want to follow a page we write a row to the followers table that has the page id and the user id. Whenever a change is made to a page we query for all of the followers and send each of them an email saying the page has been updated with a link to the page.
 
@@ -77,7 +77,28 @@ We are going to perform the following steps:
 #### Step 1. Create a message queue in SQS
 
 
+
 #### Step 2. Write a wrapper for SQS and use it to write to the queue
+
+Before we can write the wrapper for SQS we have to add a few NuGet packages. If you aren't familiar with NuGet you can check it out HERE.
+
+To add a new package we are going to click Tools -> NuGet Package Manager -> Manage NuGet Packages for Solution...
+
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/add_nuget_package.jpg){: .center-image }
+
+After we do that we are going to add the following:
+
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/sqs_nuget_package.jpg){: .center-image }
+
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/ses_nuget_package.jpg){: .center-image }
+
+![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/newtonsoft_nuget_package.jpg){: .center-image }
+
+Now that we have our packages added, we can start coding!
+
+A great resource on how to do some of this can be found here. I highly recommend the AWS documentation whenever you get stuck with anything. They keep it up to date and they have solutions for pretty much any issue you may have.
+http://docs.aws.amazon.com/sdk-for-net/v2/developer-guide/how-to/sqs/SendMessage.html
+
 
 
 #### Step 3. Reuse the wrapper for SQS and use it to read from the queue. Include a wrapper for SES that sends emails
@@ -87,4 +108,4 @@ We are going to perform the following steps:
 Tasks
 * Add some diagrams to make it more clear, including sample data values
 * Add a section describing how this pattern can be generalized to other purposes and how, what to watch out for, what the requirements are
-
+* Add link and info to get the code themselves
