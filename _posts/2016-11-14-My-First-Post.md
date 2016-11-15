@@ -77,6 +77,8 @@ We are going to perform the following steps:
 ![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/create_queue.jpg){: .center-image }
 ![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/queue_details.jpg){: .center-image }
 
+TODO: Setup permissions for access to the queue.
+
 #### Step 2. Write a wrapper for SQS and use it to write to the queue
 
 Before we can write the wrapper for SQS we have to add a few NuGet packages. If you aren't familiar with NuGet you can check it out HERE.
@@ -110,7 +112,30 @@ public interface IMessageQueue
 Then we need to create a class that implements the interface and uses the AWS SQS library:
 
 ```cs
+public class SqsMessageQueue : IMessageQueue
+{
+  private readonly AmazonSQSClient _sqsClient;
 
+  /* NOTE: It's not a good practice to store your credentials like this, this is demo code for illustrative purposes only. */
+  private readonly String _accessKey = "FILL IN";
+  private readonly String _secretKey = "FILL IN";
+
+  public SqsMessageQueue()
+  {
+    _sqsClient = new AmazonSQSClient(new BasicAWSCredentials(_accessKey, _secretKey), new AmazonSQSConfig { ServiceURL = "http://sqs.us-east-1.amazonaws.com" });
+  }
+
+  public void QueueMessage(String message)
+  {
+    SendMessageRequest sendMessageRequest = new SendMessageRequest
+    {
+        QueueUrl = "https://sqs.us-east-1.amazonaws.com/768131023931/EmailsToBeSent",
+        MessageBody = message
+    };
+
+    SendMessageResponse sendMessageResponse = _sqsClient.SendMessage(sendMessageRequest);
+  }
+}
 ```
 
 Then we need a class to represent an email message, this is what we will store in our queue:
@@ -148,6 +173,14 @@ private static void SendMessage()
   queue.QueueMessage(JsonConvert.SerializeObject(emailMessage));
 }
 ```
+If we debug the code we can see the result of sending the message:
+
+[result details image]
+
+And if we go back to AWS we can see there is a message in the queue:
+
+[image of aws sqs with item in queue]
+
 
 #### Step 3. Reuse the wrapper for SQS and use it to read from the queue. Include a wrapper for SES that sends emails
 
