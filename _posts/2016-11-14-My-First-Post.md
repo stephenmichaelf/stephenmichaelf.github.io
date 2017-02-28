@@ -1,18 +1,16 @@
 ---
 layout: post
-title: Sending emails without making your users wait
+title: Sending high volume emails without making your users wait
 ---
-### The Problem 
-
-One of the applications I am working on is a social networking site for martial artists. One of the features we have is similar to the follow feature on Twitter. When you see a page you are interested in you can choose to Follow it and get updates when anything changes.
+One of the applications I am working on is a social networking site for martial artists. We have a feature similar to the follow feature on Twitter. When you see a page you are interested in you can follow it and get updates when anything changes.
 
 ![_config.yml]({{ site.baseurl }}/images/2016-11-14-My-First-Post/follow_gym.jpg){: .center-image }
 
-For now the structure of this on the back end is straight forward. Each page as a unique id and each user has a unique id. When you want to follow a page we write a row to the followers table that has the page id and the user id. Whenever a change is made to a page we query for all of the followers and send each of them an email saying the page has been updated with a link to the page.
+In our database each page has a unique id and each user has a unique id. When you follow a page we write a row to the followers table that has the page id and the user id. When a change is made to a page we query for all of the followers of that page and send them an email saying the page has been updated with a link to the page.
 
 [show list of steps we take right now, later show new list of steps in diagram]
 
-For a small number of users you can see this probably won't cause many issues. If I own a page I can go make my update, save the changes, and be sure everyone will be notified.
+For a small number of users this won't cause issues. If I own a page I can go make my update, save the changes, and everyone will be notified without the user having to wait too long.
 
 What happens though as the number of followers starts to increase? Sending 100 emails should be pretty fast, but what about 1,000, 10,000 or 50,000? Imagine Kim Kardashian uploading something and having to notify 80 million people. When you make this update you would be waiting a pretty long time for all of these emails to get sent.
 
