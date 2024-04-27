@@ -4,11 +4,13 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+### GitHub (Microsoft Subsidiary)
 
-### More Information
+TODO: Fill this in!
 
-A place to include any other types of information that you'd like to include about yourself.
+### Microsoft
+
+TODO: Fill this in!
 
 ### Contact me
 
