@@ -3,6 +3,8 @@ layout: post
 title: Learning - Depth Estimation
 ---
 
+Learning META: Definition. Concepts. Simple example. Related concepts. Complex example. 5 real world use cases.
+
 As part of my goal to learn a bunch of new things, I am starting with `depth estimation`. I will either do 1/5/10 hours of learning, depending on how it goes! This post will keep updating.
 
 Time Spent
@@ -104,6 +106,10 @@ computer vision, sensor fusion, SLAM, motion planning, machine learning
 Gazebo, Unity, or Unreal Engine
 
 Rust programming
+
+motion planning, perception, localization, mapping, controls, and related system performance metrics.
+Complex frame transformation problems, such as target localization or multi degree of freedom robotic arms
+
 
 
 
