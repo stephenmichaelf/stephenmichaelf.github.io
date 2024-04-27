@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Learning: Depth Estimation
+title: Learning \: Depth Estimation
 ---
 
 As part of my goal to learn a bunch of new things, I am starting with `depth estimation`. I will either do 1/5/10 hours of learning, depending on how it goes! This post will keep updating.
