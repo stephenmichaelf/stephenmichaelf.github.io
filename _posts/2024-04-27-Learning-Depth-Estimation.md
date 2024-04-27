@@ -45,3 +45,7 @@ https://paperswithcode.com/task/depth-estimation
 https://medium.com/@patriciogv/the-state-of-the-art-of-depth-estimation-from-single-images-9e245d51a315
 https://paperswithcode.com/paper/high-quality-monocular-depth-estimation-via
 
+This looks interesting - https://arxiv.org/abs/2111.08600
+
+
+
