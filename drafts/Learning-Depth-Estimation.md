@@ -16,6 +16,22 @@ Depth estimation is measuring the distance of each pixel in an image (or video) 
 
 This is useful for many use cases, like self driving cars and robotics, drones, and more. The information can be fed into Machine Learning algorithms (TODO: How do the intermediary steps look between an image coming in and an action being take. The image is converted to ... X then that is fed to the network? That must not be the case for depth estimation I think).
 
+### Skills and their "depth" (not depth estimation)
+
+What are the skills related to autonomous robots? What skills level is it useful to get on each, between 1 and 10?
+
+SLAM
+Motion Planning and Control
+
+
+### Buckets
+
+Control and Motion Planning
+
+Perception and Sensing
+
+Cognitive Capabilities
+
 
 
 
@@ -80,6 +96,8 @@ Active Optical, for wavelength that os occlusion penetrating - see through fog/r
 Stereo vision methods
 Scene restructuring
 Motion planning
+Visual-Inertial Odometry Robotics
+
 
 
 
@@ -112,7 +130,13 @@ Complex frame transformation problems, such as target localization or multi degr
 
 
 
+### Useful things along the way
 
+Arxiv has papers, but this tie lets you sort by # of times cited:
+
+https://www.mdpi.com/
+
+Unclear if it has all the same articles as Arxiv
 
 
 ### Links to read
@@ -134,7 +158,15 @@ This looks interesting - https://arxiv.org/abs/2111.08600
 https://www.youtube.com/watch?v=kVoIIsdoQR4
 https://www.youtube.com/watch?v=BFdWsJs6z4c
 
+### Other Popular Papers
 
+https://arxiv.org/pdf/2304.08485v1
+https://arxiv.org/pdf/2304.02643v1
+https://arxiv.org/pdf/1412.6980
+
+#### Robotics
+
+file:///D:/OneDrive/Downloads/robotics-10-00065-v3.pdf
 
 
 
