@@ -35,10 +35,58 @@ In order to do this, I figured I just needed something that could take audio as 
 
 Thankfully OpenAI has a great APi to do this - their Audio Transcription API.
 
+The documentation starts by talking about this capability as [Speech to text](https://platform.openai.com/docs/guides/speech-to-text), it's pretty straightforward. Specifically though we want timestamps. And lucky for us 
+they have a [section for that](https://platform.openai.com/docs/guides/speech-to-text/timestamps)!
 
+We can see a snippet here of how to call the API:
 
+```
+curl https://api.openai.com/v1/audio/transcriptions \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: multipart/form-data" \
+  -F file="@/path/to/file/audio.mp3" \
+  -F "timestamp_granularities[]=word" \
+  -F model="whisper-1" \
+  -F response_format="verbose_json"
+```
 
+This looks like exactly what we want - to pass the API our recording and get back JSON that contains the timestamps of each word. From there, we can calculate our speaking rate in words per minute.
 
+To test this out I started by recording a short audio snippet of me talking at various talking speeds. I then wrote a simple C# function to call the API. The response looks like this:
+
+```
+
+```
+
+Looks great! From here all we need to do is process this to calculate WPM. A simple method I thought of is to take the average words per second (WPS) from the most recent 5 words and use that to calculate the average speaking rate. Once we do that, we get the following:
+
+```
+
+```
+
+Fantastic! This isn't the exact audio from when I spoke but it does give us a great sense of the speaking speed that is within the ideal pace and what is too fast or too slow.
+
+# Visualizing the data
+
+The data looks approximately right (after fixing some bugs) but it's much easier if we can see a visualization of our speaking speed.
+
+To do that I used Google TODO, there are a ton of easy to use components to graph and display pretty much anything you can think of.
+
+To set that up, we need to figure out how to map the WPM data we created above to a JSON structure that works for the graphing library. I'd also like to add lines to the graph that show the range of recommended speaking speeds, to make it easy to understand.
+
+Here is what that JSON structure looks like:
+
+```
+
+```
+
+And when we render the graph, we see the following:
+
+```
+
+```
+
+Nice! This gives us a great sense of when we are speaking too fast or too slow. You can easily imagine many additions like showing the exact words we are using below the timestamps in the graph.
 
 # What's next?
 
