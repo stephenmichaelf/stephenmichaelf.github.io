@@ -3,7 +3,7 @@ In this post I show how to analyze your speaking words per minute using the Open
 
 # Background
 
-We recently had a meeting at work where people were sharing their team's accomplishments from the previous quarter and what thye would be doing in the upcoming quarter.
+We recently had a meeting at work where people shared their team's accomplishments from the previous quarter and what they would be doing in the upcoming quarter.
 
 As I usually do, I prepared some slides with images and content before to try and make things entertaining and also informative. I also prepped a few times by walking through what I would say, without scripting too much.
 
@@ -52,19 +52,63 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 This looks like exactly what we want - to pass the API our recording and get back JSON that contains the timestamps of each word. From there, we can calculate our speaking rate in words per minute.
 
-To test this out I started by recording a short audio snippet of me talking at various talking speeds. I then wrote a simple C# function to call the API. The response looks like this:
+To test this out I started by recording a short audio snippet of me talking at various talking speeds. I then wrote a simple C# function to call the API. The API response looks like this:
 
+```json
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 15.40999984741211,
+  "text": "This is a recording of me talking. This is a recording of me talking faster. This is a recording of me talking even faster. This is a recording of me talking slower. This is a recording of me talking slower.",
+  "words": [
+    {
+      "word": "This",
+      "start": 0.5799999833106995,
+      "end": 1.100000023841858
+    },
+    {
+      "word": "is",
+      "start": 1.100000023841858,
+      "end": 1.3200000524520874
+    },
+    {
+      "word": "a",
+      "start": 1.3200000524520874,
+      "end": 1.4600000381469727
+    },
+    ...
+  ]
+}
 ```
 
-```
+From this analysis we can see all of the text, how long the audio is, and the start and end time for each word that was spoken.
 
 Looks great! From here all we need to do is process this to calculate WPM. A simple method I thought of is to take the average words per second (WPS) from the most recent 5 words and use that to calculate the average speaking rate. Once we do that, we get the following:
 
 ```
-
+{"Timestamp":1.100000023841858,"WordsPerMinute":0.0}
+{"Timestamp":1.100000023841858,"WordsPerMinute":0.0}
+{"Timestamp":1.100000023841858,"WordsPerMinute":0.0}
+{"Timestamp":1.100000023841858,"WordsPerMinute":0.0}
+{"Timestamp":2.0399999618530273,"WordsPerMinute":205.0}
+{"Timestamp":2.200000047683716,"WordsPerMinute":272.0}
+{"Timestamp":2.4600000381469727,"WordsPerMinute":254.0}
+{"Timestamp":3.299999952316284,"WordsPerMinute":163.0}
+{"Timestamp":3.380000114440918,"WordsPerMinute":187.0}
+{"Timestamp":3.759999990463257,"WordsPerMinute":174.0}
+{"Timestamp":3.759999990463257,"WordsPerMinute":192.0}
+{"Timestamp":4.0,"WordsPerMinute":319.0}
+{"Timestamp":4.139999866485596,"WordsPerMinute":357.0}
+{"Timestamp":4.320000171661377,"WordsPerMinute":319.0}
+{"Timestamp":4.679999828338623,"WordsPerMinute":326.0}
+{"Timestamp":5.599999904632568,"WordsPerMinute":163.0}
+{"Timestamp":5.699999809265137,"WordsPerMinute":176.0}
+{"Timestamp":6.019999980926514,"WordsPerMinute":159.0}
 ```
 
-Fantastic! This isn't the exact audio from when I spoke but it does give us a great sense of the speaking speed that is within the ideal pace and what is too fast or too slow.
+Each row is an object showing the timestamp of the end of the last word and the average WPM for the most recent 5 words. You can see the first four records are 0 since there is insufficient data to calculate the WPM.
+
+Overall this is fantastic! This isn't the exact audio from when I spoke but it does give us a great sense of how fast we are speaking throughout the clip.
 
 # Visualizing the data
 
