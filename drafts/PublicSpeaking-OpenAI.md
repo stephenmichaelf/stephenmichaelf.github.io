@@ -27,7 +27,7 @@ What I really want is to understand what makes for good public speaking and then
 
 I started seeing posts about the ideal speaking words per minute (140-160) and other things like the use of filler words, pauses, and intonation. All things I had heard of before but had never assessed myself against.
 
-# Objective analysis
+# Getting objective feedback using OpenAI
 
 While there are many attributes to great public speaking, I wanted to start with something simple (and my glaring issue) - speaking pace.
 
@@ -85,7 +85,7 @@ From this analysis we can see all of the text, how long the audio is, and the st
 
 Looks great! From here all we need to do is process this to calculate WPM. A simple method I thought of is to take the average words per second (WPS) from the most recent 5 words and use that to calculate the average speaking rate. Once we do that, we get the following:
 
-```
+```json
 {"Timestamp":1.100000023841858,"WordsPerMinute":0.0}
 {"Timestamp":1.100000023841858,"WordsPerMinute":0.0}
 {"Timestamp":1.100000023841858,"WordsPerMinute":0.0}
@@ -104,6 +104,7 @@ Looks great! From here all we need to do is process this to calculate WPM. A sim
 {"Timestamp":5.599999904632568,"WordsPerMinute":163.0}
 {"Timestamp":5.699999809265137,"WordsPerMinute":176.0}
 {"Timestamp":6.019999980926514,"WordsPerMinute":159.0}
+... (is this right? it shows more values, right?)
 ```
 
 Each row is an object showing the timestamp of the end of the last word and the average WPM for the most recent 5 words. You can see the first four records are 0 since there is insufficient data to calculate the WPM.
@@ -114,9 +115,25 @@ Overall this is fantastic! This isn't the exact audio from when I spoke but it d
 
 The data looks approximately right (after fixing some bugs) but it's much easier if we can see a visualization of our speaking speed.
 
-To do that I used Google TODO, there are a ton of easy to use components to graph and display pretty much anything you can think of.
+To do that I used [Google Charts](https://developers.google.com/chart/interactive/docs), there are a ton of easy to use components to graph and display pretty much anything you can think of.
 
 To set that up, we need to figure out how to map the WPM data we created above to a JSON structure that works for the graphing library. I'd also like to add lines to the graph that show the range of recommended speaking speeds, to make it easy to understand.
+
+[Line Chart](https://developers.google.com/chart/interactive/docs/gallery/linechart)
+
+We can add something simple to the C# code to print the data structure we need for the Google Library:
+
+```
+
+``
+
+Which prints out:
+
+```
+[[1.100000023841858,0.0],[1.100000023841858,0.0],[1.100000023841858,0.0],[1.100000023841858,0.0],[2.0399999618530273,200.0],[2.200000047683716,272.0],[2.4800000190734863,249.0],[3.319999933242798,161.0],[3.380000114440918,187.0],[3.759999990463257,174.0],[3.759999990463257,192.0],[3.9800000190734863,365.0],[4.139999866485596,365.0],[4.320000171661377,319.0],[4.760000228881836,299.0],[5.599999904632568,163.0],[5.699999809265137,174.0],[6.019999980926514,159.0],[6.019999980926514,176.0],[6.260000228881836,405.0],[6.380000114440918,384.0],[6.519999980926514,365.0],[6.920000076293945,333.0],[8.34000015258789,129.0],[8.479999542236328,135.0],[8.899999618530273,119.0],[8.899999618530273,126.0],[9.600000381469727,163.0],[9.880000114440918,194.0],[9.880000114440918,214.0],[10.399999618530273,200.0],[11.880000114440918,100.0],[12.100000381469727,120.0],[12.720000267028809,105.0],[12.720000267028809,105.0],[13.34000015258789,170.0],[13.880000114440918,150.0],[14.100000381469727,150.0],[14.760000228881836,147.0]]
+```
+
+TODO: Add min / max values to graph, print it in the data structure. 140 and 160. Show them and add their value and color (same color) like we do for the graph of speaking speed. Add all code / images.
 
 Here is what that JSON structure looks like:
 
