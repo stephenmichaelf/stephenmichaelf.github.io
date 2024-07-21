@@ -1,3 +1,7 @@
+---
+layout: post
+title: Analyzing speaking words per minute using OpenAI
+---
 
 In this post I show you how to analyze your speaking words per minute using the OpenAI Audio Transcription API. 
 
