@@ -17,6 +17,12 @@ Right away I went to tell my wife and she smiled. My office is upstairs but not 
 
 So clearly there was a significant gap between how others were seeing me present and my self perception.
 
+TODO: Not sigificant. But a gap. Something to work on to get better! It's an important skill and good ROI to improve it. But it's not easy. And maybe not fun?
+
+
+
+
+
 # Looking for a solution
 
 My first response in situations like this is to figure out how to improve. So I immediately started looking for books and public speaking coaches, of which there are quite a few!
@@ -174,3 +180,4 @@ Nice! This gives us a great sense of when we are speaking too fast or too slow. 
 
 Now that I've got this working, I plan to add more features like checking for filler words, intonation, pauses, and more. Another interesting one will be to assess the "grade level" of the speach - similar to what you 
 might do for an article you write, to see if it's simple enough.
+
