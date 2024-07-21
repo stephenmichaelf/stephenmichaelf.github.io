@@ -4,6 +4,9 @@ title: About
 permalink: /about/
 ---
 
+Currently working at GitHub as a Senior Engineering Manager. 
+I will fill in the details below soon!
+
 ### GitHub (Microsoft Subsidiary)
 
 TODO: Fill this in!
@@ -15,3 +18,4 @@ TODO: Fill this in!
 ### Contact me
 
 [Linked In](https://www.linkedin.com/in/stephen-franceschelli/)
+[Twitter]()
