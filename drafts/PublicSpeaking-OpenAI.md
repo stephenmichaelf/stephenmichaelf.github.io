@@ -50,9 +50,9 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F response_format="verbose_json"
 ```
 
-This looks like exactly what we want - to pass the API our recording and get back JSON that contains the timestamps of each word. From there, we can calculate our speaking rate in words per minute.
+This looks like exactly what we want - to pass the API our recording and get back JSON with timestamps of each word. From there, we can calculate our speaking rate.
 
-To test this out I started by recording a short audio snippet of me talking at various talking speeds. I then wrote a simple C# function to call the API. The API response looks like this:
+To test this out I recorded a short audio clip of me talking at various talking speeds. I then wrote a simple C# function to call the API. The API response looks like this:
 
 ```json
 {
@@ -81,9 +81,9 @@ To test this out I started by recording a short audio snippet of me talking at v
 }
 ```
 
-From this analysis we can see all of the text, how long the audio is, and the start and end time for each word that was spoken.
+From this API response we can see all of the text, how long the audio is, and the start and end time for each word that was spoken.
 
-Looks great! From here all we need to do is process this to calculate WPM. A simple method I thought of is to take the average words per second (WPS) from the most recent 5 words and use that to calculate the average speaking rate. Once we do that, we get the following:
+Looks great! From here all we need to do is process the data to calculate WPM. The method I used is to take the average words per second (WPS) from the most recent 5 words and use that to calculate the average speaking rate. Once we do that, we get the following:
 
 ```json
 {"Timestamp":1.100000023841858,"WordsPerMinute":0.0}
@@ -104,12 +104,12 @@ Looks great! From here all we need to do is process this to calculate WPM. A sim
 {"Timestamp":5.599999904632568,"WordsPerMinute":163.0}
 {"Timestamp":5.699999809265137,"WordsPerMinute":176.0}
 {"Timestamp":6.019999980926514,"WordsPerMinute":159.0}
-... (is this right? it shows more values, right?)
+...
 ```
 
 Each row is an object showing the timestamp of the end of the last word and the average WPM for the most recent 5 words. You can see the first four records are 0 since there is insufficient data to calculate the WPM.
 
-Overall this is fantastic! This isn't the exact audio from when I spoke but it does give us a great sense of how fast we are speaking throughout the clip.
+WHile this isn't the exact audio from when I spoke, it gives us a sense of how fast we are speaking at various perceived speeking speeds.
 
 # Visualizing the data
 
