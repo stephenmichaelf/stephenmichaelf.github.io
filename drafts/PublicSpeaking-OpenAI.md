@@ -174,7 +174,7 @@ It looks like this:
 
 And when we render the graph, we see the following:
 
-![Graph of speaking words per minute](~/images/public-speaking/graph.png)
+![Graph of speaking words per minute](../images/public-speaking/graph.png)
 
 This graph gives us a sense of when we are speaking too fast or too slow.
 
