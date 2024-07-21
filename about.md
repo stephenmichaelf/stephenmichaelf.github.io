@@ -14,8 +14,3 @@ TODO: Fill this in!
 ### Microsoft
 
 TODO: Fill this in!
-
-### Contact me
-
-[Linked In](https://www.linkedin.com/in/stephen-franceschelli/)
-[Twitter]()

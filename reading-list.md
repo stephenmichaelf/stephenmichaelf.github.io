@@ -4,7 +4,7 @@ title: Reading List
 permalink: /reading-list/
 ---
 
-# Read more than once
+### Read more than once
 
 These are books I have read more than once and highly recommend (in no particular order):
 
@@ -12,7 +12,7 @@ These are books I have read more than once and highly recommend (in no particula
 - [A Guide to Rational Living (Albert Ellis)](https://www.amazon.com/gp/product/0879800429/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
 - Psycho Cybernetics (Maxwell Maltz)
 
-# Reading right now
+### Reading right now
 
 Here are some of the things I am reading right now:
 
